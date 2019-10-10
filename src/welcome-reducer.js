@@ -1,12 +1,19 @@
-import { actions } from './actions'
+import {
+    actions
+} from './actions'
+import { createReducer } from 'redux-starter-kit'
 
-const initialState = {}
-
-export const welcomeReducer = (state = initialState, action) => {
-  console.info('Redux Action:', action)
-  switch (action.type) {
-    default:
-      return state
-  }
+const initialState = {
+    isOpen: true,
 }
 
+export const welcomeReducer = createReducer(initialState, {
+    [actions.openWelcomeModal]: state => ({
+        ...state,
+        isOpen: true,
+    }),
+    [actions.closeWelcomeModal]: state => ({
+        ...state,
+        isOpen: false,
+    }),
+})

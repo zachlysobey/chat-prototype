@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux'
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -7,12 +9,13 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-export const WelcomeModal = () => {
-    const [isOpen, setOpen] = React.useState(true);
+import { actions } from './actions'
 
-    const handleClickLogin = () => { setOpen(true); };
-    const handleClose = () => { setOpen(false); };
-
+const UnconnectedWelcomeModal = ({
+    isOpen,
+    handleClickLogin,
+    handleClose,
+}) => {
     return (
         <div className="welcome">
             <Button
@@ -52,3 +55,22 @@ export const WelcomeModal = () => {
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    console.log( state )
+    return {
+        isOpen: state.welcome.isOpen
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        handleClickLogin: () => dispatch(actions.openWelcomeModal()),
+        handleClose: () => dispatch(actions.closeWelcomeModal()),
+    }
+}
+
+export const WelcomeModal = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(UnconnectedWelcomeModal)
