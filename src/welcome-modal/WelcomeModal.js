@@ -9,7 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import { actions } from './actions'
+import { actions } from '../actions'
 
 const UnconnectedWelcomeModal = ({
     isOpen,
@@ -57,7 +57,6 @@ const UnconnectedWelcomeModal = ({
 }
 
 const mapStateToProps = state => {
-    console.log( state )
     return {
         isOpen: state.welcome.isOpen
     }
