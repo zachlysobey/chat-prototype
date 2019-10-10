@@ -1,11 +1,10 @@
 import React from 'react';
+import { WelcomeModal } from './WelcomeModal'
 
-function App() {
-  return (
-    <div className="app">
-      <h1>Chat Prototype</h1>
-    </div>
-  );
-}
+const App = () => 
+  <div className="app">
+    <h1>Chat Prototype</h1>
+    <WelcomeModal />
+  </div>
 
 export default App;
