@@ -1,68 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Chat Prototype:
 
-## Available Scripts
+The engineering team would like you to complete a mini project/coding task. Details below, it should be a runnable project and code we can code review (Using public GitHub repository ideally). This will give you a good sense of our technology stack and your ability to pick it up. We hope you find it a fun exercise and chance to learn something new.  If you have any questions let us know.  Thank you!
 
-In the project directory, you can run:
+# Summary:
 
-### `yarn start`
+Create a full stack React and Golang chat prototype where a user can join the chat and the system auto responses with a welcome message. System keeps track of number of messages. No database or persistence layer is needed, the full application state can restart on new browser window or server restart. Styling for good looks is not necessary, using whatever you can get out of the box with a component library like Material UI is fine. Showing an updated style will be nice. System should use web sockets for chat messages. Any additional helper libraries in the JavaScript or Go world are fine to use.  For UI side using create-react-app bootstrapper is fine.  For state management on UI feel free to use React’s new native options around hooks and contexts, Redux, or Apollo.  If using Apollo we do use this library for backend Go GraphQL, but likely not necessary for this project.  Github readme should describe how to start the frontend and backend services and run it, Docker setup is optional, not required.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Steps:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Page 1:
+Step 1 - Welcomes user and collects one input field, email. Offers “join chat” button.
+Page 2:
+Step 1 - User transitioned to a chat window which shows a message with their email that they joined the chat.
+Step 2 - System automatically emits a welcome message introducing our Mount Sinai helper bot.
+Step 3 - User can type any number of other messages that append to the window chat room and a message counter at top increments up as each message is added live.
