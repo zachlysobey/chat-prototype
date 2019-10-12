@@ -21,6 +21,7 @@ This project is seperated into two main directories:
 ### Clone and install dependencies
 
 ```sh
+$ cd $GOPATH/src/github.com/
 $ git clone git@github.com:zachlysobey/chat-prototype.git
 $ cd client && npm install; cd -
 $ cd server && ...
@@ -29,15 +30,15 @@ $ cd server && ...
 ### Run the server
 
 ```sh
-# (from the root directory)
+# (from the chat-prototype root directory)
 $ cd server
-$ ...
+$ go run main.go
 ```
 
 ### Run the client
 
 ```sh
-# (from the root directory)
+# (from the chat-prototype root directory)
 $ cd client/
 $ npm start
 ```
