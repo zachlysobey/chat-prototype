@@ -65,7 +65,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         handleClickLogin: () => dispatch(actions.openWelcomeModal()),
-        handleClose: () => dispatch(actions.closeWelcomeModal()),
+        handleClose: (...args) => {
+            console.log({ args })
+            dispatch(actions.closeWelcomeModal())
+        },
     }
 }
 
