@@ -38,6 +38,24 @@ func handleWs(
 
 	defer ws.Close()
 
-	bytes := []byte("foo bar")
-	ws.WriteMessage(websocket.TextMessage, bytes)
+	bytes := []byte("Hello Client!")
+	err = ws.WriteMessage(websocket.TextMessage, bytes)
+	if err != nil {
+		log.Println("WriteMessage (initial) error:", err)
+	}
+
+	for {
+		messageType, message, err := ws.ReadMessage()
+		if err != nil {
+			log.Println("Read Error:", err)
+			break
+		}
+		log.Printf("recieved message: \"%s\"", message)
+
+		err = ws.WriteMessage(messageType, message)
+		if err != nil {
+			log.Println("WriteMessage (echo) error:", err)
+			break
+		}
+	}
 }

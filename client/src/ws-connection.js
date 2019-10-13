@@ -1,12 +1,15 @@
 
-function connectToWebsocket () {
-    const WS_URL = 'ws://localhost:8000/ws'
-    const webSocket = new WebSocket(WS_URL)
+function connectToWebsocket (
+    url = 'ws://localhost:8000/ws',
+) {
+    const webSocket = new WebSocket(url)
 
-    const events = ['onopen', 'onmessage', 'onerror']
-    events.forEach(event =>
-        webSocket[event] = console.info.bind(console, event)
-    )
+    webSocket.onopen = e => {
+        console.log('webSocket openned', e)
+        webSocket.send("Hello, server!")
+    }
+    webSocket.onmessage = e => console.log('webSocket message', e.data, e)
+    webSocket.onerror = e => console.error('webSocket error', e)
 }
 
 connectToWebsocket()
