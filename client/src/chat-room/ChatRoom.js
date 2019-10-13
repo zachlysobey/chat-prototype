@@ -9,7 +9,7 @@ import { actions } from '../actions'
 const UnconnectedChatRoom = ({
     isOpen,
     loggedInUser,
-    addNewMessage,
+    sendMessage,
     messages = [],
 }) => {
     const [value, setValue] = React.useState('')
@@ -22,8 +22,8 @@ const UnconnectedChatRoom = ({
         <h4>Messages:</h4>
 
         <ul>{
-            messages.map(msg =>
-                <li>{msg}</li>
+            messages.map((msg, key) =>
+                <li key={key}>{msg}</li>
             )
         }</ul>
 
@@ -31,7 +31,7 @@ const UnconnectedChatRoom = ({
             onSubmit={e => {
                 e.preventDefault()
                 console.log('submit', e, e.target)
-                addNewMessage(value)
+                sendMessage(value)
                 setValue('')
             }}
         >
@@ -59,7 +59,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addNewMessage: (message) => dispatch(actions.addNewMessage(message))
+        sendMessage: (message) => dispatch(actions.sendMessage(message))
     }
 }
 

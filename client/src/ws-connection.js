@@ -1,15 +1,23 @@
+let webSocket
 
-function connectToWebsocket (
+export function connectToWebsocket ({
     url = 'ws://localhost:8000/ws',
-) {
-    const webSocket = new WebSocket(url)
-
-    webSocket.onopen = e => {
+    onOpen = e => {
         console.log('webSocket openned', e)
-        webSocket.send("Hello, server!")
-    }
-    webSocket.onmessage = e => console.log('webSocket message', e.data, e)
-    webSocket.onerror = e => console.error('webSocket error', e)
+        sendMessage("Hello, server!")
+    },
+    onMessage = e => console.log('webSocket message', e.data),
+    onError = e => console.error('webSocket error', e)
+} = {}) {
+    webSocket = new WebSocket(url)
+    webSocket.onopen = onOpen
+    webSocket.onmessage = onMessage
+    webSocket.onerror = onError
 }
 
-connectToWebsocket()
+export function sendMessage (message) {
+    if (!webSocket) {
+        throw new Error('Websocket not initialized')
+    }
+    webSocket.send(message)
+}
