@@ -8,8 +8,9 @@ export const actions = {
     updateEmail: createAction('UPDATE_EMAIL'),
     addNewMessage: createAction('ADD_NEW_MESSAGE'),
     messageSent,
-    sendMessage: (message) => (dispatch) => {
-        sendMessage(message)
+    sendMessage: (message) => (dispatch, getState) => {
+        const { email: user } = getState().welcome
+        sendMessage({ user, message })
         dispatch(messageSent)
     },
     openWelcomeModal: createAction('OPEN_WELCOME_MODAL'),

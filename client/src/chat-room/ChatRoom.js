@@ -21,9 +21,9 @@ const UnconnectedChatRoom = ({
 
         <h4>Messages:</h4>
 
-        <ul>{
-            messages.map((msg, key) =>
-                <li key={key}>{msg}</li>
+        <ul style={{ listStyleType: 'none' }}>{
+            messages.map(({ message, user}, key) =>
+                <li key={key}>({user}) {message}</li>
             )
         }</ul>
 

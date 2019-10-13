@@ -15,6 +15,6 @@ export const chatRoomReducer = createReducer(initialState, {
     }),
     [actions.addNewMessage]: (state, action) => ({
         ...state,
-        messages: [...state.messages, action.payload]
+        messages: [...state.messages, JSON.parse(action.payload)]
     }),
 })

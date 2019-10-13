@@ -1,17 +1,25 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/websocket"
 )
 
+type ChatMessageJSON struct {
+	User    string `json:"user"`
+	Message string `json:"message"`
+}
+
 var upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool {
 		return true
 	},
 }
+
+var serverUser = "ChatBot"
 
 func main() {
 	log.Println("Hello, World!")
@@ -42,8 +50,12 @@ func handleWs(
 
 	defer ws.Close()
 
-	bytes := []byte("Hello Client!")
-	err = ws.WriteMessage(websocket.TextMessage, bytes)
+	initialChatMessageJSON := &ChatMessageJSON{
+		User:    serverUser,
+		Message: "Hello Client!",
+	}
+	marshalledJSON, _ := json.Marshal(initialChatMessageJSON)
+	err = ws.WriteMessage(websocket.TextMessage, marshalledJSON)
 	if err != nil {
 		log.Println("WriteMessage (initial) error:", err)
 	}

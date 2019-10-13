@@ -2,10 +2,7 @@ let webSocket
 
 export function connectToWebsocket ({
     url = 'ws://localhost:8000/ws',
-    onOpen = e => {
-        console.log('webSocket openned', e)
-        sendMessage("Hello, server!")
-    },
+    onOpen = e => console.log('webSocket openned', e),
     onMessage = e => console.log('webSocket message', e.data),
     onError = e => console.error('webSocket error', e)
 } = {}) {
@@ -19,5 +16,5 @@ export function sendMessage (message) {
     if (!webSocket) {
         throw new Error('Websocket not initialized')
     }
-    webSocket.send(message)
+    webSocket.send(JSON.stringify(message))
 }
