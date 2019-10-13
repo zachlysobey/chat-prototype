@@ -8,23 +8,15 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
 import { actions } from '../actions'
 
 const UnconnectedWelcomeModal = ({
     isOpen,
     handleUpdateEmail,
-    handleClickLogin,
     handleClose,
 }) => {
     return (
         <div className="welcome">
-            <Button
-                onClick={handleClickLogin}
-                color="secondary"
-            >
-                Log-in
-            </Button>
             <Dialog
                 open={isOpen}
                 onClose={handleClose}
@@ -35,13 +27,11 @@ const UnconnectedWelcomeModal = ({
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        To subscribe to this website, please enter your email address here. We will send updates
-                        occasionally.
+                        Enter your email below. This will be used as your chat user name.
                     </DialogContentText>
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="name"
                         label="Email Address"
                         type="email"
                         onChange={(e) => handleUpdateEmail(e.target.value)}
@@ -67,7 +57,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         handleUpdateEmail: (newValue) => dispatch(actions.updateEmail(newValue)),
-        handleClickLogin: () => dispatch(actions.openWelcomeModal()),
         handleClose: (e) => {
             console.log('handleClose event', e.target.value, 'e', e)
             dispatch(actions.closeWelcomeModal())

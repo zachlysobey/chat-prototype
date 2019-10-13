@@ -1,0 +1,20 @@
+.logged-in-message {
+    text-align: right;
+}
+.chat-messages {
+    list-style-type: none;
+    height: 70vh;
+    margin-bottom: 100px;
+    border: 2px solid #333;
+}
+.bottom-appbar {
+    top: auto !important;
+    bottom: 0;
+}
+.new-message-form {
+    display: flex;
+}
+.text-input {
+    background: rgba(255, 255, 255, .3);
+    width: calc(100% - 60px)
+}

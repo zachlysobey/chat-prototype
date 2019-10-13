@@ -3,12 +3,17 @@ import { connect } from 'react-redux'
 
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import AppBar from '@material-ui/core/AppBar'
+import Container from '@material-ui/core/Container'
 
 import { actions } from '../actions'
+
+import './chat-room.css'
 
 const UnconnectedChatRoom = ({
     isOpen,
     loggedInUser,
+    handleChangeUser,
     sendMessage,
     messages = [],
 }) => {
@@ -17,35 +22,50 @@ const UnconnectedChatRoom = ({
     if (!isOpen) return null
 
     return <>
-        <h3>Logged in as "{loggedInUser}"</h3>
+        <p className="logged-in-message">
+            Logged in as "{loggedInUser}"
+            <Button
+                onClick={handleChangeUser}
+                color="secondary"
+            >
+                Change User
+            </Button>
+        </p>
 
-        <h4>Messages:</h4>
-
-        <ul style={{ listStyleType: 'none' }}>{
+        <ul className="chat-messages">{
             messages.map(({ message, user}, key) =>
                 <li key={key}>({user}) {message}</li>
             )
         }</ul>
 
-        <form
-            onSubmit={e => {
-                e.preventDefault()
-                console.log('submit', e, e.target)
-                sendMessage(value)
-                setValue('')
-            }}
-        >
-            <TextField
-                autoFocus
-                margin="dense"
-                id="new-message"
-                label="New Chat message"
-                type="text"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-            />
-            <Button variant="contained" color="primary" type="submit">&gt;</Button>
-        </form>
+        <AppBar position="fixed" color="primary" className="bottom-appbar">
+            <Container fixed>
+                <form
+                    className="new-message-form"
+                    onSubmit={e => {
+                        e.preventDefault()
+                        console.log('submit', e, e.target)
+                        sendMessage(value)
+                        setValue('')
+                    }}
+                >
+                    <TextField
+                    className="text-input"
+                        autoFocus
+                        hiddenLabel
+                        margin="dense"
+                        id="new-message"
+                        placeholder="New Chat message..."
+                        type="text"
+                        variant="filled"
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                    />
+                    
+                    <Button variant="contained" color="primary" type="submit">&gt;</Button>
+                </form>
+            </Container>
+        </AppBar>
     </>
 }
 
@@ -59,7 +79,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        sendMessage: (message) => dispatch(actions.sendMessage(message))
+        handleChangeUser: () => dispatch(actions.openWelcomeModal()),
+        sendMessage: (message) => dispatch(actions.sendMessage(message)),
     }
 }
 
