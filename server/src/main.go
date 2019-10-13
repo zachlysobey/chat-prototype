@@ -8,6 +8,9 @@ import (
 func main() {
 	log.Println("Hello, World!")
 
+	fs := http.FileServer(http.Dir("../../client/build"))
+	http.Handle("/", fs)
+
 	http.HandleFunc("/ws", handleWs)
 
 	log.Println("http server started on http://localhost:8000")
