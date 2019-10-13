@@ -13,6 +13,7 @@ import { actions } from '../actions'
 
 const UnconnectedWelcomeModal = ({
     isOpen,
+    handleUpdateEmail,
     handleClickLogin,
     handleClose,
 }) => {
@@ -43,6 +44,7 @@ const UnconnectedWelcomeModal = ({
                         id="name"
                         label="Email Address"
                         type="email"
+                        onChange={(e) => handleUpdateEmail(e.target.value)}
                         fullWidth
                     />
                 </DialogContent>
@@ -64,9 +66,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        handleUpdateEmail: (newValue) => dispatch(actions.updateEmail(newValue)),
         handleClickLogin: () => dispatch(actions.openWelcomeModal()),
-        handleClose: (...args) => {
-            console.log({ args })
+        handleClose: (e) => {
+            console.log('handleClose event', e.target.value, 'e', e)
             dispatch(actions.closeWelcomeModal())
         },
     }
