@@ -53,7 +53,7 @@ func handleWs(
 
 	initialChatMessageJSON := &ChatMessageJSON{
 		User:    serverUser,
-		Message: "Connected",
+		Message: "Welcome to Zach Chat!",
 	}
 	marshalledJSON, _ := json.Marshal(initialChatMessageJSON)
 	err = ws.WriteMessage(websocket.TextMessage, marshalledJSON)
@@ -80,7 +80,7 @@ func handleWs(
 		if chatMessage == "<connected>" {
 			userConnectedResponseJSON := &ChatMessageJSON{
 				User:    serverUser,
-				Message: fmt.Sprintf("Hello, %s!", user),
+				Message: fmt.Sprintf("%s has joined the chat!", user),
 			}
 			marshalledJSON, _ := json.Marshal(userConnectedResponseJSON)
 			err = ws.WriteMessage(websocket.TextMessage, marshalledJSON)
