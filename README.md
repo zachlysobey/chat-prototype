@@ -18,6 +18,8 @@ This project is seperated into two main directories:
 - GO
 - NodeJs, Npm
 
+*This was developed and tested only on OSX with go v1.13.1, node v12.3.1, and npm v6.9.0*
+
 ### Clone and install dependencies
 
 ```sh
