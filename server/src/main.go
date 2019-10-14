@@ -47,7 +47,7 @@ func handleWs(
 
 	initialChatMessageJSON := &ChatMessageJSON{
 		User:    serverUser,
-		Message: "Hello Client!",
+		Message: "Connected",
 	}
 	marshalledJSON, _ := json.Marshal(initialChatMessageJSON)
 	err = ws.WriteMessage(websocket.TextMessage, marshalledJSON)
