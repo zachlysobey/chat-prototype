@@ -72,6 +72,6 @@ $ cd client/
 $ npm test
 ```
 
-## Next steps:
+## Whats next:
 
-I'll try to document any features I'd like to add in the [GitHub issues](https://github.com/zachlysobey/chat-prototype/issues)
+I've added desired features, and ideas for next steps as [GitHub issues](https://github.com/zachlysobey/chat-prototype/issues)
