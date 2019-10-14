@@ -2,11 +2,17 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/websocket"
 )
+
+type ChatMessage struct {
+	User    string
+	Message string
+}
 
 type ChatMessageJSON struct {
 	User    string `json:"user"`
@@ -63,7 +69,24 @@ func handleWs(
 		}
 		log.Printf("recieved message: \"%s\"", message)
 
-		err = ws.WriteMessage(messageType, message)
+		var jsonData ChatMessage
+		if err := json.Unmarshal(message, &jsonData); err != nil {
+			panic(err)
+		}
+		user := jsonData.User
+		chatMessage := jsonData.Message
+		log.Println(user, chatMessage)
+
+		if chatMessage == "<connected>" {
+			userConnectedResponseJSON := &ChatMessageJSON{
+				User:    serverUser,
+				Message: fmt.Sprintf("Hello, %s!", user),
+			}
+			marshalledJSON, _ := json.Marshal(userConnectedResponseJSON)
+			err = ws.WriteMessage(websocket.TextMessage, marshalledJSON)
+		} else {
+			err = ws.WriteMessage(messageType, message)
+		}
 		if err != nil {
 			log.Println("WriteMessage (echo) error:", err)
 			break
