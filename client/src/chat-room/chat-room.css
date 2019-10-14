@@ -1,6 +1,20 @@
 .logged-in-message {
     text-align: right;
 }
+.message-count {
+    text-align: right;
+    font-size: .8em;
+    margin: 0 1em -2em;
+}
+.message-count span {
+    font-style: italic;
+    border: 1px solid #333;
+    border-radius: 10px; 
+    padding: .2em;
+    background: white;
+    z-index: 999;
+    position: relative;
+}
 .chat-messages {
     list-style-type: none;
     height: calc(100vh - 250px);

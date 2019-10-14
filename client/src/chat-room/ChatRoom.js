@@ -32,6 +32,8 @@ const UnconnectedChatRoom = ({
             </Button>
         </p>
 
+        <p className="message-count"><span>{messages.length} messages</span></p>
+
         <ul className="chat-messages">{
             messages.map(({ message, user}, key) =>
                 <li key={key}
