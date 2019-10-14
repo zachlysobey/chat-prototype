@@ -38,7 +38,6 @@ $ cd client/
 $ npm run build
 ```
 
-
 ### Run the server
 
 ```sh
@@ -70,6 +69,10 @@ Navigate to http://localhost:8000 (instead of port :3000) for dev mode. This is 
 $ cd client/
 $ npm test
 ```
+
+## Next steps:
+
+I'll try to document any features I'd like to add in the [GitHub issues](https://github.com/zachlysobey/chat-prototype/issues)
 
 ## Specifications:
 
