@@ -31,11 +31,11 @@ func main() {
 	http.Handle("/", http.FileServer(http.Dir("../../client/build")))
 	http.HandleFunc("/ws", handleWs)
 
+	log.Println("http server starting on http://localhost:8000")
 	err := http.ListenAndServe(":8000", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
-	log.Println("http server started on http://localhost:8000")
 }
 
 func handleWs(
