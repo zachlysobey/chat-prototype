@@ -34,7 +34,12 @@ const UnconnectedChatRoom = ({
 
         <ul className="chat-messages">{
             messages.map(({ message, user}, key) =>
-                <li key={key}>({user}) {message}</li>
+                <li key={key}
+                    className={`message-from-${user===loggedInUser ? 'me' : 'them'}`}
+                >
+                    <span className="user">{user}</span>
+                    <span className="message">{message}</span>
+                </li>
             )
         }</ul>
 

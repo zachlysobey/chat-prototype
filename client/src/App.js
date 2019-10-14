@@ -24,7 +24,9 @@ const App = () =>  {
     <div className="app">
       <CssBaseline />
       <AppBar position="static">
-        <h1 style={{ textAlign: 'center' }}>Chat Prototype</h1>
+        <Container fixed>
+          <h1>Zach Chat</h1>
+        </Container>
       </AppBar>
       <Container fixed>
         <Typography component="div">
