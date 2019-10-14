@@ -30,6 +30,15 @@ $ cd client && npm install; cd -
 
 *NOTE: I'm actually not clear if there is anything that needs to be done to install Go dependencies. I have not experimented beyond initial development here.*
 
+### Build the client
+
+```sh
+# (from the chat-prototype root directory)
+$ cd client/
+$ npm run build
+```
+
+
 ### Run the server
 
 ```sh
@@ -38,7 +47,11 @@ $ cd server
 $ go run main.go
 ```
 
-### Run the client
+### Navigate to the app
+
+By default it should be running at http://localhost:8000
+
+### Run the client in development mode
 
 ```sh
 # (from the chat-prototype root directory)
@@ -46,7 +59,11 @@ $ cd client/
 $ npm start
 ```
 
+Navigate to http://localhost:8000 (instead of port :3000) for dev mode. This is the create-react-app dev server, and will auto-reload based on client source changes.
+
 ### Run the client unit tests
+
+*Note: I haven't actually touched the unit tests here. I'm sure they break. Usually I'd drive the development with tests, but since this is a quick prototype, that did not seem appropriate.
 
 ```sh
 # (from the root directory)
