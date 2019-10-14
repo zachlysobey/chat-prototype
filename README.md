@@ -26,8 +26,9 @@ This project is seperated into two main directories:
 $ cd $GOPATH/src/github.com/
 $ git clone git@github.com:zachlysobey/chat-prototype.git
 $ cd client && npm install; cd -
-$ cd server && ...
 ```
+
+*NOTE: I'm actually not clear if there is anything that needs to be done to install Go dependencies. I have not experimented beyond initial development here.*
 
 ### Run the server
 
