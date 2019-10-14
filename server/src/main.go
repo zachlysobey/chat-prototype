@@ -69,18 +69,15 @@ func handleWs(
 		}
 		log.Printf("recieved message: \"%s\"", message)
 
-		var jsonData ChatMessage
-		if err := json.Unmarshal(message, &jsonData); err != nil {
+		var chatMessage ChatMessage
+		if err := json.Unmarshal(message, &chatMessage); err != nil {
 			panic(err)
 		}
-		user := jsonData.User
-		chatMessage := jsonData.Message
-		log.Println(user, chatMessage)
 
-		if chatMessage == "<connected>" {
+		if chatMessage.Message == "<connected>" {
 			userConnectedResponseJSON := &ChatMessageJSON{
 				User:    serverUser,
-				Message: fmt.Sprintf("%s has joined the chat!", user),
+				Message: fmt.Sprintf("%s has joined the chat!", chatMessage.User),
 			}
 			marshalledJSON, _ := json.Marshal(userConnectedResponseJSON)
 			err = ws.WriteMessage(websocket.TextMessage, marshalledJSON)
