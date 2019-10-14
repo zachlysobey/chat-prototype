@@ -12,6 +12,6 @@ export const welcomeReducer = createReducer(
     {
         [actions.updateEmail]: (state, { payload: email }) => ({ ...state, email }),
         [actions.openWelcomeModal]: assoc('isOpen', true),
-        [actions.closeWelcomeModal]: assoc('isOpen', false),
+        [actions.welcomeModalClosed]: assoc('isOpen', false),
     }
 )
