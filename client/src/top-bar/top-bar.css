@@ -1,0 +1,6 @@
+.top-bar .github-link {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    transform: rotate(-25deg);
+}

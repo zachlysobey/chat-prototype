@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux'
 
-import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -9,6 +8,8 @@ import Container from '@material-ui/core/Container';
 import { connectToWebsocket } from './ws-connection'
 import { configureStore } from './redux-store'
 import { actions } from './actions'
+
+import { TopBar } from './top-bar/TopBar'
 import { WelcomeModal } from './welcome-modal/WelcomeModal'
 import { ChatRoom } from './chat-room/ChatRoom'
 
@@ -23,11 +24,7 @@ const App = () =>  {
   return <Provider store={store}>
     <div className="app">
       <CssBaseline />
-      <AppBar position="static">
-        <Container fixed>
-          <h1>Zach Chat</h1>
-        </Container>
-      </AppBar>
+      <TopBar />
       <Container fixed>
         <Typography component="div">
           <WelcomeModal />
